@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Conference Room Booking</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div id="app">
+
+    <!-- Login Section -->
+    <div id="loginSection" class="page">
+      <h2>Login</h2>
+     <input type="text" id="loginPhone" placeholder="Mobile Number">
+
+<div class="password-container">
+  <input type="password" id="loginPassword" placeholder="Password">
+  <label>
+    <input type="checkbox" onclick="togglePassword('loginPassword')"> Show
+  </label>
+</div>
+     
+      <button onclick="loginUser()">Login</button>
+
+      <!-- Admin Login -->
+      <p><button onclick="window.location.href='admin-login.html'">Admin Login</button></p>
+
+      <p>Don’t have an account? <a href="#" onclick="showPage('registerSection')">Register</a></p>
+    </div>
+
+    <!-- Register Section -->
+    <div id="registerSection" class="page" style="display:none;">
+      <h2>Register</h2>
+      <input type="text" id="regName" placeholder="Full Name">
+      <input type="text" id="regPhone" placeholder="Mobile Number">
+      <div class="password-container">
+        <input type="password" id="regPassword" placeholder="Password">
+        <input type="checkbox" onclick="togglePassword('regPassword')"> Show
+      </div>
+      <div class="password-container">
+        <input type="password" id="regConfirmPassword" placeholder="Confirm Password">
+        <input type="checkbox" onclick="togglePassword('regConfirmPassword')"> Show
+      </div>
+      <button onclick="registerUser()">Register</button>
+      <p>Already have an account? <a href="#" onclick="showPage('loginSection')">Login</a></p>
+    </div>
+
+    <!-- Dashboard Section -->
+    <div id="dashboardSection" class="page" style="display:none;">
+      <h2>Dashboard</h2>
+      <p>Welcome, <span id="userName"></span>!</p>
+      <button onclick="logoutUser()">Logout</button>
+
+      <hr>
+
+      <h3>Conference Room Services</h3>
+
+      <!-- 1. View All Rooms -->
+      <button onclick="toggleRooms()">View All Rooms</button>
+      <div id="roomsList" style="display:none;"></div>
+
+      <!-- 2. Get Room By ID -->
+      <h4>Find Room By ID</h4>
+      <input type="number" id="roomIdInput" placeholder="Enter Room ID">
+      <button onclick="getRoomById()">Search</button>
+      <div id="roomDetails"></div>
+
+      <!-- 3. Create Booking -->
+      <h4>Create Booking</h4>
+      <input type="number" id="bookingRoomId" placeholder="Room ID">
+      <input type="datetime-local" id="startTime">
+      <input type="datetime-local" id="endTime">
+      <button onclick="createBooking()">Book</button>
+      <div id="bookingResult"></div>
+
+      <!-- 4. Cancel Booking -->
+      <h4>Cancel Booking</h4>
+      <input type="number" id="cancelBookingId" placeholder="Booking ID">
+      <button onclick="cancelBooking()">Cancel</button>
+      <div id="cancelResult"></div>
+
+      <!-- 5. Active Bookings -->
+      <h4>Check Active Bookings</h4>
+      <input type="number" id="activeRoomId" placeholder="Room ID">
+      <button onclick="getActiveBookings()">Check</button>
+      <div id="activeBookings"></div>
+    </div>
+
+  </div>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>
